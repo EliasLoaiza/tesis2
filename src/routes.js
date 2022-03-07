@@ -50,6 +50,19 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
+const IngresarUsuario = React.lazy(() => import('./views/Usuario/IngresarUsuario'))
+const BuscarUsuario = React.lazy(() => import('./views/Usuario/BuscarUsuario'))
+const IngresarEmpresa = React.lazy(() => import('./views/Empresa/IngresarEmpresa'))
+const BuscarEmpresa = React.lazy(() => import('./views/Empresa/BuscarEmpresa'))
+const IngresarCargo = React.lazy(() => import('./views/Empresa/IngresarCargo'))
+const BuscarCargo = React.lazy(() => import('./views/Empresa/BuscarCargo'))
+const IngresarProceso = React.lazy(() => import('./views/Empresa/IngresarProceso'))
+const BuscarProceso = React.lazy(() => import('./views/Empresa/BuscarProceso'))
+const IngresarMedicamentos = React.lazy(() => import('./views/Medicamentos/IngresarMedicamentos'))
+const BuscarMedicamentos = React.lazy(() => import('./views/Medicamentos/BuscarMedicamentos'))
+const IngresarLotes = React.lazy(() => import('./views/Lotes/IngresarLotes'))
+const BuscarLotes = React.lazy(() => import('./views/Lotes/BuscarLotes'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
@@ -95,6 +108,22 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', component: Modals },
   { path: '/notifications/toasts', name: 'Toasts', component: Toasts },
   { path: '/widgets', name: 'Widgets', component: Widgets },
+  { path: '/Usuario', name: 'Usuario', component: BuscarUsuario, exact: true },
+  { path: '/Usuario/IngresarUsuario', name: 'Ingresar Usuario', component: IngresarUsuario },
+  { path: '/Usuario/BuscarUsuario', name: 'Buscar Usuario', component: BuscarUsuario },
+  { path: '/Empresa', name: 'Empresa', component: BuscarEmpresa, exact: true },
+  { path: '/Empresa/IngresarEmpresa', name: 'Ingresar Empresa', component: IngresarEmpresa },
+  { path: '/Empresa/BuscarEmpresa', name: 'Buscar Empresa', component: BuscarEmpresa },
+  { path: '/Empresa/IngresarCargo', name: 'Ingresar Cargo', component: IngresarCargo },
+  { path: '/Empresa/BuscarCargo', name: 'Buscar Cargo', component: BuscarCargo },
+  { path: '/Empresa/IngresarProceso', name: 'Ingresar Proceso', component: IngresarProceso },
+  { path: '/Empresa/BuscarProceso', name: 'Buscar Proceso', component: BuscarProceso },
+  { path: '/Lotes', name: 'Lotes', component: BuscarLotes, exact: true },
+  { path: '/Lotes/IngresarLotes', name: 'Ingresar Lotes', component: IngresarLotes },
+  { path: '/Lotes/BuscarLotes', name: 'Buscar Lotes', component: BuscarLotes },
+  { path: '/Medicamentos', name: 'Medicamentos', component: BuscarMedicamentos, exact: true },
+  { path: '/Medicamentos/IngresarMedicamentos', name: 'Ingresar Medicamentos', component: IngresarMedicamentos }, // eslint-disable-line
+  { path: '/Medicamentos/BuscarMedicamentos', name: 'Buscar Medicamentos', component: BuscarMedicamentos }, // eslint-disable-line
 ]
 
 export default routes

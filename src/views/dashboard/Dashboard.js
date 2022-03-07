@@ -182,22 +182,22 @@ const Dashboard = () => {
 
   return (
     <>
-      <WidgetsDropdown />
+      {/* <WidgetsDropdown /> */}
       <CCard className="mb-4">
         <CCardBody>
           <CRow>
             <CCol sm={5}>
               <h4 id="traffic" className="card-title mb-0">
-                Traffic
+                Trafico
               </h4>
-              <div className="small text-medium-emphasis">January - July 2021</div>
+              <div className="small text-medium-emphasis">Enero - Abril 2022</div>
             </CCol>
             <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
                 <CIcon icon={cilCloudDownload} />
               </CButton>
               <CButtonGroup className="float-end me-3">
-                {['Day', 'Month', 'Year'].map((value) => (
+                {['Dia', 'Mes', 'Año'].map((value) => (
                   <CButton
                     color="outline-secondary"
                     key={value}
@@ -295,7 +295,7 @@ const Dashboard = () => {
             }}
           />
         </CCardBody>
-        <CCardFooter>
+        {/* <CCardFooter>
           <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
             {progressExample.map((item, index) => (
               <CCol className="mb-sm-2 mb-0" key={index}>
@@ -307,12 +307,12 @@ const Dashboard = () => {
               </CCol>
             ))}
           </CRow>
-        </CCardFooter>
+        </CCardFooter> */}
       </CCard>
 
-      <WidgetsBrand withCharts />
+      {/* <WidgetsBrand withCharts /> */}
 
-      <CRow>
+      {/* <CRow>
         <CCol xs>
           <CCard className="mb-4">
             <CCardHeader>Traffic {' & '} Sales</CCardHeader>
@@ -455,7 +455,7 @@ const Dashboard = () => {
             </CCardBody>
           </CCard>
         </CCol>
-      </CRow>
+      </CRow> */}
     </>
   )
 }
