@@ -91,7 +91,7 @@ const BuscarMedicamentos = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -106,20 +106,30 @@ const BuscarMedicamentos = (props) => {
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Mark</CTableDataCell>
-              <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>@mdo</CTableDataCell>
+              <CTableDataCell>Arbistina</CTableDataCell>
+              <CTableDataCell>Oral</CTableDataCell>
+              <CTableDataCell>Analgésicos y antiinflamatorios</CTableDataCell>
+              <CTableDataCell>Estanteria estandar</CTableDataCell>
+              <CTableDataCell>28/02/2021</CTableDataCell>
+              <CTableDataCell>15/05/2022</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>@fat</CTableDataCell>
+              <CTableDataCell>Dayzol</CTableDataCell>
+              <CTableDataCell>Intravenosa</CTableDataCell>
+              <CTableDataCell>Antiulcerosos y antiácidos</CTableDataCell>
+              <CTableDataCell>Nevera a 30 Grados Celcius</CTableDataCell>
+              <CTableDataCell>12/04/2020</CTableDataCell>
+              <CTableDataCell>15/05/2022</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
-              <CTableDataCell>@twitter</CTableDataCell>
+              <CTableDataCell>Terbicrym</CTableDataCell>
+              <CTableDataCell>Intravenosa</CTableDataCell>
+              <CTableDataCell>Antidiarreicos y laxantes</CTableDataCell>
+              <CTableDataCell>Estanteria Estandar en Cuarto Oscuro</CTableDataCell>
+              <CTableDataCell>20/07/2010</CTableDataCell>
+              <CTableDataCell>23/12/2018</CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>

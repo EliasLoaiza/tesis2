@@ -81,7 +81,7 @@ const BuscarUsuario = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -101,18 +101,37 @@ const BuscarUsuario = (props) => {
               <CTableHeaderCell scope="row">1</CTableHeaderCell>
               <CTableDataCell>Mark</CTableDataCell>
               <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>@mdo</CTableDataCell>
+              <CTableDataCell>1234567</CTableDataCell>
+              <CTableDataCell>markotto@gmail.com</CTableDataCell>
+              <CTableDataCell>0424-1234567</CTableDataCell>
+              <CTableDataCell>Persona Natural</CTableDataCell>
+              <CTableDataCell>Av. La Guajira</CTableDataCell>
+              <CTableDataCell></CTableDataCell>
+              <CTableDataCell>01/01/2000</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
               <CTableDataCell>Jacob</CTableDataCell>
               <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>@fat</CTableDataCell>
+              <CTableDataCell>12857867</CTableDataCell>
+              <CTableDataCell>jacobthornton@gmail.com</CTableDataCell>
+              <CTableDataCell>0424-9874567</CTableDataCell>
+              <CTableDataCell>Trabajador</CTableDataCell>
+              <CTableDataCell>Av. Las Delicias</CTableDataCell>
+              <CTableDataCell>Gerente</CTableDataCell>
+              <CTableDataCell>10/01/1999</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
-              <CTableDataCell>@twitter</CTableDataCell>
+              <CTableDataCell>Larry</CTableDataCell>
+              <CTableDataCell>Bird</CTableDataCell>
+              <CTableDataCell>78671285</CTableDataCell>
+              <CTableDataCell>LarryBird@hotmail.com</CTableDataCell>
+              <CTableDataCell>0412-5679874</CTableDataCell>
+              <CTableDataCell>Trabajador</CTableDataCell>
+              <CTableDataCell>Urb. La Picola</CTableDataCell>
+              <CTableDataCell>Asistente de Ventas</CTableDataCell>
+              <CTableDataCell>28/5/2005</CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>

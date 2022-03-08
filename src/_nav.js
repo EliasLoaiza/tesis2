@@ -22,7 +22,7 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Inciar Secion',
+    name: 'Inciar Sesión',
     to: '/login',
   },
   {
@@ -110,6 +110,11 @@ const _nav = [
         component: CNavItem,
         name: 'Buscar Lotes',
         to: '/Lotes/BuscarLotes',
+      },
+      {
+        component: CNavItem,
+        name: 'Estado de los Lotes',
+        to: '/Lotes/EstadoLotes',
       },
     ],
   },

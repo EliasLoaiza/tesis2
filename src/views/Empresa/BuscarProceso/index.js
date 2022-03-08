@@ -54,7 +54,7 @@ const BuscarProceso = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -66,20 +66,21 @@ const BuscarProceso = (props) => {
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Mark</CTableDataCell>
-              <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>@mdo</CTableDataCell>
+              <CTableDataCell>Verificacion de Seriales</CTableDataCell>
+              <CTableDataCell>A-113</CTableDataCell>
+              <CTableDataCell>Proceso para Revisar Seriales de Cada Medicamento y Lotes</CTableDataCell>{/*eslint-disable-line */}
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>@fat</CTableDataCell>
+              <CTableDataCell>Carga de Productos</CTableDataCell>
+              <CTableDataCell>C-123</CTableDataCell>
+              <CTableDataCell>Proceso de Carga de Productos en Camiones para Distribucion</CTableDataCell>{/*eslint-disable-line */}
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
-              <CTableDataCell>@twitter</CTableDataCell>
+              <CTableDataCell>Control de Calidad de Compuesto</CTableDataCell>
+              <CTableDataCell>A-113</CTableDataCell>
+              <CTableDataCell>Proceso de Certificacion y Prueba de Compuestos de los Medicamentos</CTableDataCell>{/*eslint-disable-line */}
             </CTableRow>
           </CTableBody>
         </CTable>

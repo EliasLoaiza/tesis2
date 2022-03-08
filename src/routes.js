@@ -62,6 +62,7 @@ const IngresarMedicamentos = React.lazy(() => import('./views/Medicamentos/Ingre
 const BuscarMedicamentos = React.lazy(() => import('./views/Medicamentos/BuscarMedicamentos'))
 const IngresarLotes = React.lazy(() => import('./views/Lotes/IngresarLotes'))
 const BuscarLotes = React.lazy(() => import('./views/Lotes/BuscarLotes'))
+const EstadoLotes = React.lazy(() => import('./views/Lotes/EstadoLotes'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -121,6 +122,7 @@ const routes = [
   { path: '/Lotes', name: 'Lotes', component: BuscarLotes, exact: true },
   { path: '/Lotes/IngresarLotes', name: 'Ingresar Lotes', component: IngresarLotes },
   { path: '/Lotes/BuscarLotes', name: 'Buscar Lotes', component: BuscarLotes },
+  { path: '/Lotes/EstadoLotes', name: 'Estado Lotes', component: EstadoLotes },
   { path: '/Medicamentos', name: 'Medicamentos', component: BuscarMedicamentos, exact: true },
   { path: '/Medicamentos/IngresarMedicamentos', name: 'Ingresar Medicamentos', component: IngresarMedicamentos }, // eslint-disable-line
   { path: '/Medicamentos/BuscarMedicamentos', name: 'Buscar Medicamentos', component: BuscarMedicamentos }, // eslint-disable-line

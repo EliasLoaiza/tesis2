@@ -54,7 +54,7 @@ const BuscarEmpresa = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -66,20 +66,21 @@ const BuscarEmpresa = (props) => {
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Mark</CTableDataCell>
-              <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>@mdo</CTableDataCell>
+              <CTableDataCell>Farmatodo</CTableDataCell>
+              <CTableDataCell>J1391293</CTableDataCell>
+              <CTableDataCell>Av.Bella Vista</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>@fat</CTableDataCell>
+              <CTableDataCell>Saas</CTableDataCell>
+              <CTableDataCell>J91283178</CTableDataCell>
+              <CTableDataCell>Calle 72</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
-              <CTableDataCell>@twitter</CTableDataCell>
+              <CTableDataCell>Farmapunto</CTableDataCell>
+              <CTableDataCell>J8938912</CTableDataCell>
+              <CTableDataCell>Av.Fuerzas Armadas</CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>

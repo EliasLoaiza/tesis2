@@ -57,33 +57,37 @@ const BuscarCargo = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
               <CTableHeaderCell scope="col">Codigo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Nombre de la Empresa</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Direccion</CTableHeaderCell>
+              <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Mark</CTableDataCell>
-              <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>@mdo</CTableDataCell>
+              <CTableDataCell>MR-123</CTableDataCell>
+              <CTableDataCell>Medico Regente</CTableDataCell>
+              <CTableDataCell>Famartodo</CTableDataCell>
+              <CTableDataCell>encargado de la administracion de toda la farmacia</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>@fat</CTableDataCell>
+              <CTableDataCell>R-111</CTableDataCell>
+              <CTableDataCell>Regente</CTableDataCell>
+              <CTableDataCell>Farmaexpress</CTableDataCell>
+              <CTableDataCell>Encargado de toda la farmacia</CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
-              <CTableDataCell>@twitter</CTableDataCell>
+              <CTableDataCell>A-333</CTableDataCell>
+              <CTableDataCell>Asistente</CTableDataCell>
+              <CTableDataCell>Locatel</CTableDataCell>
+              <CTableDataCell>Encargado de la atencion al cliente</CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>
