@@ -213,7 +213,7 @@ const Dashboard = () => {
           <CChartLine
             style={{ height: '300px', marginTop: '40px' }}
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: ['Enero', 'Frebrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
               datasets: [
                 {
                   label: 'My First dataset',

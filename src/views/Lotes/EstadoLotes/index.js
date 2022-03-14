@@ -42,16 +42,7 @@ const EstadoLotes = (props) => {
               <CCardBody className="p-4">
                 <CForm>
                   <CInputGroup className="mb-3">
-                    <CFormInput placeholder="Nombre de la Empresa" autoComplete="username" />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
-                    <CFormInput placeholder="RIF" />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
-                    <CFormLabel htmlFor="exampleFormControlTextarea1">Direccion</CFormLabel> {/*eslint-disable-line */}
-                    <CInputGroup className="mb-3">
-                      <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
-                    </CInputGroup>
+                    <CFormInput placeholder="Codigo del Lote" autoComplete="username" />
                   </CInputGroup>
                   <div className="d-grid">
                     <CButton color="success">Ingresar Empresa</CButton>

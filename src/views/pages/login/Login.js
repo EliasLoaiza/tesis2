@@ -26,7 +26,7 @@ const Login = () => {
               <CCard className="p-4">
                 <CCardBody>
                   <CForm>
-                    <h1>Inicio de Seción</h1>
+                    <h1>Inicio de Sesión</h1>
                     <p className="text-medium-emphasis">Ingrea con tu cuenta</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>

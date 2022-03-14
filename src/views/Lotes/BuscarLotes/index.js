@@ -35,6 +35,9 @@ const BuscarLotes = (props) => {
           <CRow>
             <CCol>
               <CInputGroup className="mb-3">
+                <CFormInput placeholder="Codigo del Lote" autoComplete="username" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
                 <CFormInput placeholder="Hash del Lote" autoComplete="username" />
               </CInputGroup>
               <CInputGroup className="mb-3">
