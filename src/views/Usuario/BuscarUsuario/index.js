@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -23,11 +23,21 @@ import {
   CTableRow,
   CTableCaption,
 } from '@coreui/react'
+import { Component } from 'react'
 /**
  * @author
  * @function BuscarUsuario
  **/
 const BuscarUsuario = (props) => {
+  const { usuarios, setusuarios } = useState([])
+  useEffect(() => {
+    const getusuarios = () => {
+      fetch('http://localhost:9000/api')
+        .then((res) => res.json())
+        .then((res) => setusuarios(res))
+    }
+    getusuarios()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -81,7 +91,7 @@ const BuscarUsuario = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable striped>
+        <CTable striped usuarios={usuarios}>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -98,16 +108,19 @@ const BuscarUsuario = (props) => {
           </CTableHead>
           <CTableBody>
             <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Mark</CTableDataCell>
-              <CTableDataCell>Otto</CTableDataCell>
-              <CTableDataCell>1234567</CTableDataCell>
-              <CTableDataCell>markotto@gmail.com</CTableDataCell>
-              <CTableDataCell>0424-1234567</CTableDataCell>
-              <CTableDataCell>Persona Natural</CTableDataCell>
-              <CTableDataCell>Av. La Guajira</CTableDataCell>
-              <CTableDataCell></CTableDataCell>
-              <CTableDataCell>01/01/2000</CTableDataCell>
+              {usuarios.map((usuario) => {
+                <CTableRow> {/* eslint-disable-line*/}
+                  <CTableHeaderCell scope="row">{usuario.id}</CTableHeaderCell>
+                  <CTableDataCell>{usuario.cedula}</CTableDataCell>
+                  <CTableDataCell>{usuario.nombre}</CTableDataCell>
+                  <CTableDataCell>{usuario.apellido}</CTableDataCell>
+                  <CTableDataCell>{usuario.correo}</CTableDataCell>
+                  <CTableDataCell>{usuario.telefono}</CTableDataCell>
+                  <CTableDataCell>{usuario.tipo}</CTableDataCell>
+                  <CTableDataCell>{usuario.direccion}</CTableDataCell>
+                  <CTableDataCell>{usuario.fecha_nacimiento}</CTableDataCell>
+                </CTableRow>
+              })}
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell scope="row">2</CTableHeaderCell>
