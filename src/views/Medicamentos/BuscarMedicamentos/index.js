@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -28,6 +28,15 @@ import {
  * @function BuscarMedicamentos
  **/
 const BuscarMedicamentos = (props) => {
+  const [medicamentos, setmedicamentos] = useState([])
+  useEffect(() => {
+    const getmedicamentos = () => {
+      fetch('http://localhost:9002/api')
+        .then((res) => res.json())
+        .then((res) => setmedicamentos(res))
+    }
+    getmedicamentos()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -104,33 +113,17 @@ const BuscarMedicamentos = (props) => {
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Arbistina</CTableDataCell>
-              <CTableDataCell>Oral</CTableDataCell>
-              <CTableDataCell>Analgésicos y antiinflamatorios</CTableDataCell>
-              <CTableDataCell>Estanteria estandar</CTableDataCell>
-              <CTableDataCell>28/02/2021</CTableDataCell>
-              <CTableDataCell>15/05/2022</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Dayzol</CTableDataCell>
-              <CTableDataCell>Intravenosa</CTableDataCell>
-              <CTableDataCell>Antiulcerosos y antiácidos</CTableDataCell>
-              <CTableDataCell>Nevera a 30 Grados Celcius</CTableDataCell>
-              <CTableDataCell>12/04/2020</CTableDataCell>
-              <CTableDataCell>15/05/2022</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>Terbicrym</CTableDataCell>
-              <CTableDataCell>Intravenosa</CTableDataCell>
-              <CTableDataCell>Antidiarreicos y laxantes</CTableDataCell>
-              <CTableDataCell>Estanteria Estandar en Cuarto Oscuro</CTableDataCell>
-              <CTableDataCell>20/07/2010</CTableDataCell>
-              <CTableDataCell>23/12/2018</CTableDataCell>
-            </CTableRow>
+            {medicamentos.map( (medicamento) => ( /* eslint-disable-line*/
+              <CTableRow key={medicamento.id}>
+                <CTableHeaderCell scope="row">{medicamento.id}</CTableHeaderCell>
+                <CTableDataCell>{medicamento.nombre}</CTableDataCell>
+                <CTableDataCell>{medicamento.tipo_administracion}</CTableDataCell>
+                <CTableDataCell>{medicamento.uso}</CTableDataCell>
+                <CTableDataCell>{medicamento.condiciones_almacenamiento}</CTableDataCell>
+                <CTableDataCell>{medicamento.fecha_expedicion}</CTableDataCell>
+                <CTableDataCell>{medicamento.fecha_vencimiento}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>

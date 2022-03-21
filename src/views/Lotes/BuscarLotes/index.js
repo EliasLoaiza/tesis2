@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -28,6 +28,15 @@ import {
  * @function BuscarLotes
  **/
 const BuscarLotes = (props) => {
+  const [lotes, setlotes] = useState([])
+  useEffect(() => {
+    const getlotes = () => {
+      fetch('http://localhost:9003/api')
+        .then((res) => res.json())
+        .then((res) => setlotes(res))
+    }
+    getlotes()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -90,36 +99,14 @@ const BuscarLotes = (props) => {
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>75c450c3f963befb912ee79f0b63e563652780f0</CTableDataCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Arbistina</CTableDataCell>
-              <CTableDataCell>100.000</CTableDataCell>
-              <CTableDataCell>Farmatodo</CTableDataCell>
-              <CTableDataCell>31/01/2022</CTableDataCell>
-              <CTableDataCell>04/02/2022</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>8b9248a4e0b64bbccf82e7723a3734279bf9bbc4</CTableDataCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Dayzol</CTableDataCell>
-              <CTableDataCell>50.000</CTableDataCell>
-              <CTableDataCell>Farmaexpress</CTableDataCell>
-              <CTableDataCell>23/12/2021</CTableDataCell>
-              <CTableDataCell>04/01/2022</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>8b9248a4e0b64bbccf82e7723a3734279bf9bbc4</CTableDataCell>
-              <CTableDataCell>Samuel</CTableDataCell>
-              <CTableDataCell>Acetaminofen</CTableDataCell>
-              <CTableDataCell>10</CTableDataCell>
-              <CTableDataCell>Saas</CTableDataCell>
-              <CTableDataCell>16/08/2015</CTableDataCell>
-              <CTableDataCell>17/11/2016</CTableDataCell>
-            </CTableRow>
+            {lotes.map( (lote) => ( /* eslint-disable-line*/
+              <CTableRow key={lote.id}>
+                <CTableHeaderCell scope="row">{lote.id}</CTableHeaderCell>
+                <CTableDataCell>{lote.rif}</CTableDataCell>
+                <CTableDataCell>{lote.nombre}</CTableDataCell>
+                <CTableDataCell>{lote.direccion}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>

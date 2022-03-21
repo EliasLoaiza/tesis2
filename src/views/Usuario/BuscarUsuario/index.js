@@ -29,7 +29,7 @@ import { Component } from 'react'
  * @function BuscarUsuario
  **/
 const BuscarUsuario = (props) => {
-  const { usuarios, setusuarios } = useState([])
+  const [usuarios, setusuarios] = useState([])
   useEffect(() => {
     const getusuarios = () => {
       fetch('http://localhost:9000/api')
@@ -38,6 +38,13 @@ const BuscarUsuario = (props) => {
     }
     getusuarios()
   }, [])
+  // const handleChange = (e) => {
+  //   setusuarios({
+  //     ...usuarios,
+  //     [e.target.name]: e.target.value,
+  //   })
+  // }
+  console.log(usuarios)
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -45,45 +52,45 @@ const BuscarUsuario = (props) => {
           <CRow>
             <CCol>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Nombres" autoComplete="username" />
+                <CFormInput name="Nombre" placeholder="Nombres" autoComplete="username" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Apellidos" autoComplete="username" />
+                <CFormInput name="Apellido" placeholder="Apellidos" autoComplete="username" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Cedula" />
+                <CFormInput name="Cedula" placeholder="Cedula" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Telefono" />
+                <CFormInput name="Telefono" placeholder="Telefono" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormSelect aria-label="Default select example">
+                <CFormSelect name="Tipo de Usuario" aria-label="Default select example"> {/* eslint-disable-line*/}
                   <option>Selecciona el Tipo de Usuario</option>
                   <option value="Persona Natural">Persona Natural</option>
                   <option value="Trabajador">Trabajador</option>
                 </CFormSelect>
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Correo" autoComplete="email" />
+                <CFormInput name="Correo" placeholder="Correo" autoComplete="email" /> {/* eslint-disable-line*/}
               </CInputGroup>
             </CCol>
             <CCol>
               <CInputGroup className="mb-3">
                 <CFormLabel htmlFor="exampleFormControlTextarea1">Direccion</CFormLabel>
                 <CInputGroup className="mb-3">
-                  <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+                  <CFormTextarea name="Direccion" id="exampleFormControlTextarea1" rows="3"></CFormTextarea> {/* eslint-disable-line*/}
                 </CInputGroup>
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Cargo" />
+                <CFormInput name="Cargo" placeholder="Cargo" />
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CInputGroup className="mb-3">
                   <CFormLabel htmlFor="">Fecha de Nacimiento</CFormLabel>
                 </CInputGroup>
-                <CFormInput placeholder="Dia" />
-                <CFormInput placeholder="Mes" />
-                <CFormInput placeholder="Años" />
+                <CFormInput name="Dia" placeholder="Dia" />
+                <CFormInput name="Mes" placeholder="Mes" />
+                <CFormInput name="Años" placeholder="Años" />
               </CInputGroup>
             </CCol>
             <div className="d-grid">
@@ -91,7 +98,7 @@ const BuscarUsuario = (props) => {
             </div>
           </CRow>
         </CForm>
-        <CTable striped usuarios={usuarios}>
+        <CTable striped>
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -102,50 +109,23 @@ const BuscarUsuario = (props) => {
               <CTableHeaderCell scope="col">Telefono</CTableHeaderCell>
               <CTableHeaderCell scope="col">Tipo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Direccion</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Fecha de Nacimiento</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              {usuarios.map((usuario) => {
-                <CTableRow> {/* eslint-disable-line*/}
-                  <CTableHeaderCell scope="row">{usuario.id}</CTableHeaderCell>
-                  <CTableDataCell>{usuario.cedula}</CTableDataCell>
-                  <CTableDataCell>{usuario.nombre}</CTableDataCell>
-                  <CTableDataCell>{usuario.apellido}</CTableDataCell>
-                  <CTableDataCell>{usuario.correo}</CTableDataCell>
-                  <CTableDataCell>{usuario.telefono}</CTableDataCell>
-                  <CTableDataCell>{usuario.tipo}</CTableDataCell>
-                  <CTableDataCell>{usuario.direccion}</CTableDataCell>
-                  <CTableDataCell>{usuario.fecha_nacimiento}</CTableDataCell>
-                </CTableRow>
-              })}
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Jacob</CTableDataCell>
-              <CTableDataCell>Thornton</CTableDataCell>
-              <CTableDataCell>12857867</CTableDataCell>
-              <CTableDataCell>jacobthornton@gmail.com</CTableDataCell>
-              <CTableDataCell>0424-9874567</CTableDataCell>
-              <CTableDataCell>Trabajador</CTableDataCell>
-              <CTableDataCell>Av. Las Delicias</CTableDataCell>
-              <CTableDataCell>Gerente</CTableDataCell>
-              <CTableDataCell>10/01/1999</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>Larry</CTableDataCell>
-              <CTableDataCell>Bird</CTableDataCell>
-              <CTableDataCell>78671285</CTableDataCell>
-              <CTableDataCell>LarryBird@hotmail.com</CTableDataCell>
-              <CTableDataCell>0412-5679874</CTableDataCell>
-              <CTableDataCell>Trabajador</CTableDataCell>
-              <CTableDataCell>Urb. La Picola</CTableDataCell>
-              <CTableDataCell>Asistente de Ventas</CTableDataCell>
-              <CTableDataCell>28/5/2005</CTableDataCell>
-            </CTableRow>
+            {usuarios.map( (usuario) => ( /* eslint-disable-line*/
+              <CTableRow key={usuario.id}>
+                <CTableHeaderCell scope="row">{usuario.id}</CTableHeaderCell>
+                <CTableDataCell>{usuario.nombre}</CTableDataCell>
+                <CTableDataCell>{usuario.apellido}</CTableDataCell>
+                <CTableDataCell>{usuario.cedula}</CTableDataCell>
+                <CTableDataCell>{usuario.correo}</CTableDataCell>
+                <CTableDataCell>{usuario.telefono}</CTableDataCell>
+                <CTableDataCell>{usuario.tipo}</CTableDataCell>
+                <CTableDataCell>{usuario.direccion}</CTableDataCell>
+                <CTableDataCell>{usuario.fecha_nacimiento}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -28,6 +28,15 @@ import {
  * @function BuscarCargo
  **/
 const BuscarCargo = (props) => {
+  const [cargos, setcargos] = useState([])
+  useEffect(() => {
+    const getcargos = () => {
+      fetch('http://localhost:9005/api')
+        .then((res) => res.json())
+        .then((res) => setcargos(res))
+    }
+    getcargos()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -63,32 +72,18 @@ const BuscarCargo = (props) => {
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
               <CTableHeaderCell scope="col">Codigo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Nombre de la Empresa</CTableHeaderCell>
               <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>MR-123</CTableDataCell>
-              <CTableDataCell>Medico Regente</CTableDataCell>
-              <CTableDataCell>Famartodo</CTableDataCell>
-              <CTableDataCell>encargado de la administracion de toda la farmacia</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>R-111</CTableDataCell>
-              <CTableDataCell>Regente</CTableDataCell>
-              <CTableDataCell>Farmaexpress</CTableDataCell>
-              <CTableDataCell>Encargado de toda la farmacia</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>A-333</CTableDataCell>
-              <CTableDataCell>Asistente</CTableDataCell>
-              <CTableDataCell>Locatel</CTableDataCell>
-              <CTableDataCell>Encargado de la atencion al cliente</CTableDataCell>
-            </CTableRow>
+            {cargos.map( (cargo) => ( /* eslint-disable-line*/
+              <CTableRow key={cargo.id}>
+                <CTableHeaderCell scope="row">{cargo.id}</CTableHeaderCell>
+                <CTableDataCell>{cargo.codigo}</CTableDataCell>
+                <CTableDataCell>{cargo.nombre}</CTableDataCell>
+                <CTableDataCell>{cargo.descripcion}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>

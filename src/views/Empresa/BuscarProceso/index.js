@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -28,6 +28,15 @@ import {
  * @function BuscarProceso
  **/
 const BuscarProceso = (props) => {
+  const [procesos, setprocesos] = useState([])
+  useEffect(() => {
+    const getprocesos = () => {
+      fetch('http://localhost:9004/api')
+        .then((res) => res.json())
+        .then((res) => setprocesos(res))
+    }
+    getprocesos()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -59,29 +68,17 @@ const BuscarProceso = (props) => {
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
               <CTableHeaderCell scope="col">Nombre</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Verificacion de Seriales</CTableDataCell>
-              <CTableDataCell>A-113</CTableDataCell>
-              <CTableDataCell>Proceso para Revisar Seriales de Cada Medicamento y Lotes</CTableDataCell>{/*eslint-disable-line */}
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Carga de Productos</CTableDataCell>
-              <CTableDataCell>C-123</CTableDataCell>
-              <CTableDataCell>Proceso de Carga de Productos en Camiones para Distribucion</CTableDataCell>{/*eslint-disable-line */}
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>Control de Calidad de Compuesto</CTableDataCell>
-              <CTableDataCell>A-113</CTableDataCell>
-              <CTableDataCell>Proceso de Certificacion y Prueba de Compuestos de los Medicamentos</CTableDataCell>{/*eslint-disable-line */}
-            </CTableRow>
+            {procesos.map( (proceso) => ( /* eslint-disable-line*/
+              <CTableRow key={proceso.id}>
+                <CTableHeaderCell scope="row">{proceso.id}</CTableHeaderCell>
+                <CTableDataCell>{proceso.nombre}</CTableDataCell>
+                <CTableDataCell>{proceso.descripcion}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>

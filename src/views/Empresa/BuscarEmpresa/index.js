@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -28,6 +28,15 @@ import {
  * @function BuscarEmpresa
  **/
 const BuscarEmpresa = (props) => {
+  const [empresas, setempresas] = useState([])
+  useEffect(() => {
+    const getempresas = () => {
+      fetch('http://localhost:9001/api')
+        .then((res) => res.json())
+        .then((res) => setempresas(res))
+    }
+    getempresas()
+  }, [])
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -64,24 +73,14 @@ const BuscarEmpresa = (props) => {
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            <CTableRow>
-              <CTableHeaderCell scope="row">1</CTableHeaderCell>
-              <CTableDataCell>Farmatodo</CTableDataCell>
-              <CTableDataCell>J1391293</CTableDataCell>
-              <CTableDataCell>Av.Bella Vista</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">2</CTableHeaderCell>
-              <CTableDataCell>Saas</CTableDataCell>
-              <CTableDataCell>J91283178</CTableDataCell>
-              <CTableDataCell>Calle 72</CTableDataCell>
-            </CTableRow>
-            <CTableRow>
-              <CTableHeaderCell scope="row">3</CTableHeaderCell>
-              <CTableDataCell>Farmapunto</CTableDataCell>
-              <CTableDataCell>J8938912</CTableDataCell>
-              <CTableDataCell>Av.Fuerzas Armadas</CTableDataCell>
-            </CTableRow>
+            {empresas.map( (empresa) => ( /* eslint-disable-line*/
+              <CTableRow key={empresa.id}>
+                <CTableHeaderCell scope="row">{empresa.id}</CTableHeaderCell>
+                <CTableDataCell>{empresa.rif}</CTableDataCell>
+                <CTableDataCell>{empresa.nombre}</CTableDataCell>
+                <CTableDataCell>{empresa.direccion}</CTableDataCell>
+              </CTableRow>
+            ))}
           </CTableBody>
         </CTable>
       </CContainer>
