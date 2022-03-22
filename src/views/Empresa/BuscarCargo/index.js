@@ -31,7 +31,7 @@ const BuscarCargo = (props) => {
   const [cargos, setcargos] = useState([])
   useEffect(() => {
     const getcargos = () => {
-      fetch('http://localhost:9005/api')
+      fetch('http://localhost:9000/Cargo')
         .then((res) => res.json())
         .then((res) => setcargos(res))
     }

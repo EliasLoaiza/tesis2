@@ -5,7 +5,7 @@ routes.get('/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
 
-        conn.query('SELECT * FROM cargo', (err, rows)=>{
+        conn.query('SELECT * FROM medicamento', (err, rows)=>{
             if(err) return res.send(err)
 
             res.json(rows)
@@ -16,10 +16,10 @@ routes.get('/', (req, res)=>{
 routes.post('/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('INSERT INTO cargo set ?', [req.body], (err, rows)=>{
+        conn.query('INSERT INTO medicamento set ?', [req.body], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('Cargo Agregado')
+            res.send('Medicamento Agregado')
         })
     })
 })
@@ -27,10 +27,10 @@ routes.post('/', (req, res)=>{
 routes.delete('/:id', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM cargos WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM medicamento WHERE id = ?', [req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('Cargo Eliminado')
+            res.send('Medicamento Eliminado')
         })
     })
 })
@@ -38,10 +38,10 @@ routes.delete('/:id', (req, res)=>{
 routes.put('/:id', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('UPDATE books set ? WHERE id = ?', [req.body, req.params.id], (err, rows)=>{
+        conn.query('UPDATE medicamento set ? WHERE id = ?', [req.body, req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('Cargo Actualizado')
+            res.send('Medicamento Actualizado')
         })
     })
 })

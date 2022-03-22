@@ -31,7 +31,7 @@ const BuscarProceso = (props) => {
   const [procesos, setprocesos] = useState([])
   useEffect(() => {
     const getprocesos = () => {
-      fetch('http://localhost:9004/api')
+      fetch('http://localhost:9000/Proceso')
         .then((res) => res.json())
         .then((res) => setprocesos(res))
     }

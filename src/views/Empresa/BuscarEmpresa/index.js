@@ -31,7 +31,7 @@ const BuscarEmpresa = (props) => {
   const [empresas, setempresas] = useState([])
   useEffect(() => {
     const getempresas = () => {
-      fetch('http://localhost:9001/api')
+      fetch('http://localhost:9000/Empresa')
         .then((res) => res.json())
         .then((res) => setempresas(res))
     }
@@ -67,8 +67,8 @@ const BuscarEmpresa = (props) => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Nombre</CTableHeaderCell>
               <CTableHeaderCell scope="col">RIF</CTableHeaderCell>
+              <CTableHeaderCell scope="col">Nombre</CTableHeaderCell>
               <CTableHeaderCell scope="col">Direccion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>

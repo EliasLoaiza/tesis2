@@ -31,7 +31,7 @@ const BuscarLotes = (props) => {
   const [lotes, setlotes] = useState([])
   useEffect(() => {
     const getlotes = () => {
-      fetch('http://localhost:9003/api')
+      fetch('http://localhost:9000/Lote')
         .then((res) => res.json())
         .then((res) => setlotes(res))
     }

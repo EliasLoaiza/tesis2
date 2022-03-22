@@ -24,7 +24,9 @@ app.use(cors())
 app.get("/", (req, res)=>{
     res.send("Welcome to my API")
 })
-app.use("/api", routes)
+// app.use("/api", routes)
+// app.use("/")
+routes(app)
 
 // server running -----------------------------------
 app.listen(app.get("port"), ()=>{

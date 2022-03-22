@@ -32,18 +32,12 @@ const BuscarUsuario = (props) => {
   const [usuarios, setusuarios] = useState([])
   useEffect(() => {
     const getusuarios = () => {
-      fetch('http://localhost:9000/api')
+      fetch('http://localhost:9000/Usuario')
         .then((res) => res.json())
         .then((res) => setusuarios(res))
     }
     getusuarios()
   }, [])
-  // const handleChange = (e) => {
-  //   setusuarios({
-  //     ...usuarios,
-  //     [e.target.name]: e.target.value,
-  //   })
-  // }
   console.log(usuarios)
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">

@@ -31,7 +31,7 @@ const BuscarMedicamentos = (props) => {
   const [medicamentos, setmedicamentos] = useState([])
   useEffect(() => {
     const getmedicamentos = () => {
-      fetch('http://localhost:9002/api')
+      fetch('http://localhost:9000/Medicamento')
         .then((res) => res.json())
         .then((res) => setmedicamentos(res))
     }

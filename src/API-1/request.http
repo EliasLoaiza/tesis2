@@ -1,26 +1,21 @@
 ###
-GET http://localhost:9000/api HTTP/1.1
+GET http://localhost:9000 HTTP/1.1
 
 ###
-POST http://localhost:9000/api HTTP/1.1
+POST http://localhost:9000 HTTP/1.1
 Content-Type: application/json
 
 {
-    "cedula": "35084316",
-    "nombre": "Evan",
-    "apellido": "Loaiza",
-    "correo": "evanloaizarincon@gmail.com",
-    "telefono": "",
-    "tipo": "Persona Natural",
-    "direccion": "El Bosque III villa 15",
-    "fecha_nacimiento": "07-05-2013"
+    "rif": "1518075",
+    "nombre": "FarmaExpress",
+    "direccion": "Maracaibo, Zulia, Venezuela"
 }
 
 ###
-DELETE http://localhost:9000/api/2 HTTP/1.1
+DELETE http://localhost:9000 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/1 HTTP/1.1
+PUT http://localhost:9000 HTTP/1.1
 Content-Type: application/json
 
 {

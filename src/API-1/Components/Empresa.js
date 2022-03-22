@@ -19,7 +19,7 @@ routes.post('/', (req, res)=>{
         conn.query('INSERT INTO empresa set ?', [req.body], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('|Empresa Agregada')
+            res.send('Empresa Agregado')
         })
     })
 })
@@ -30,7 +30,7 @@ routes.delete('/:id', (req, res)=>{
         conn.query('DELETE FROM empresa WHERE id = ?', [req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('Empresa Eliminada')
+            res.send('Empresa Eliminado')
         })
     })
 })
@@ -41,7 +41,7 @@ routes.put('/:id', (req, res)=>{
         conn.query('UPDATE empresa set ? WHERE id = ?', [req.body, req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('Empresa Actualizada')
+            res.send('Empresa Actualizado')
         })
     })
 })
