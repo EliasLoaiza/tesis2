@@ -2,6 +2,7 @@ const express = require("express")
 const mysql = require("mysql")
 const myconn = require("express-myconnection")
 const cors = require("cors")
+const bodyParser = require('body-parser')
 
 const routes = require("./routes")
 
@@ -19,6 +20,8 @@ const dbOptions = {
 app.use(myconn(mysql, dbOptions, "single"))
 app.use(express.json())
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // routes -------------------------------------------
 app.get("/", (req, res)=>{

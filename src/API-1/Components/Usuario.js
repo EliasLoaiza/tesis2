@@ -19,7 +19,7 @@ routes.post('/', (req, res)=>{
         conn.query('INSERT INTO usuario set ?', [req.body], (err, rows)=>{
             if(err) return res.send(err)
 
-            res.send('|Usuario Agregado')
+            res.send('Usuario Agregado')
         })
     })
 })
