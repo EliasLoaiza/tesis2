@@ -28,6 +28,7 @@ import {
  * @function BuscarLotes
  **/
 const BuscarLotes = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [lotes, setlotes] = useState([])
   useEffect(() => {
     const getlotes = () => {
@@ -36,7 +37,16 @@ const BuscarLotes = (props) => {
         .then((res) => setlotes(res))
     }
     getlotes()
-  }, [])
+  }, [listUpdate])
+  const handleDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Lote/' + id, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -44,22 +54,22 @@ const BuscarLotes = (props) => {
           <CRow>
             <CCol>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Codigo del Lote" autoComplete="username" />
+                <CFormInput placeholder="Codigo del Lote" />
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Hash del Lote" autoComplete="username" />
+                <CFormInput placeholder="Hash del Lote" />
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Nombre de Usuario" autoComplete="username" />
+                <CFormInput placeholder="Nombre de Usuario" />
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Nombre de Medicamento" autoComplete="username" />
+                <CFormInput placeholder="Nombre de Medicamento" />
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Cantidad de Medicamentos" autoComplete="username" />
+                <CFormInput placeholder="Cantidad de Medicamentos" />
               </CInputGroup>
               <CInputGroup className="mb-3">
-                <CFormInput placeholder="Nombre de Empresa" autoComplete="username" />
+                <CFormInput placeholder="Nombre de Empresa" />
               </CInputGroup>
             </CCol>
             <CCol>
@@ -67,17 +77,13 @@ const BuscarLotes = (props) => {
                 <CInputGroup className="mb-3">
                   <CFormLabel htmlFor="">Fecha de Creacion</CFormLabel>
                 </CInputGroup>
-                <CFormInput placeholder="Dia" />
-                <CFormInput placeholder="Mes" />
-                <CFormInput placeholder="Años" />
+                <CFormInput id="fecha_creacion" name="fecha_creacion" type="date" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CInputGroup className="mb-3">
                   <CFormLabel htmlFor="">Fecha de Salida</CFormLabel>
                 </CInputGroup>
-                <CFormInput placeholder="Dia" />
-                <CFormInput placeholder="Mes" />
-                <CFormInput placeholder="Años" />
+                <CFormInput id="fecha_salida" name="fecha_salida" type="date" /> {/* eslint-disable-line*/}
               </CInputGroup>
             </CCol>
             <div className="d-grid">
@@ -102,9 +108,14 @@ const BuscarLotes = (props) => {
             {lotes.map( (lote) => ( /* eslint-disable-line*/
               <CTableRow key={lote.id}>
                 <CTableHeaderCell scope="row">{lote.id}</CTableHeaderCell>
-                <CTableDataCell>{lote.rif}</CTableDataCell>
-                <CTableDataCell>{lote.nombre}</CTableDataCell>
-                <CTableDataCell>{lote.direccion}</CTableDataCell>
+                <CTableDataCell>{lote.hash_actual}</CTableDataCell>
+                <CTableDataCell>{lote.nombre_usuario}</CTableDataCell>
+                <CTableDataCell>{lote.nombre_medicamento}</CTableDataCell>
+                <CTableDataCell>{lote.cantidad_medicamentos}</CTableDataCell>
+                <CTableDataCell>{lote.nombre_empresa}</CTableDataCell>
+                <CTableDataCell>{lote.fecha_creacion}</CTableDataCell>
+                <CTableDataCell>{lote.fecha_salida}</CTableDataCell>
+                <CButton onClick={() => handleDelete(lote.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

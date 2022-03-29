@@ -2,15 +2,14 @@ const express = require('express')
 const routes = express.Router()
 
 routes.get('/', (req, res)=>{
+    console.log(req.params.nombre)
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-
-        conn.query('SELECT * FROM usuario', (err, rows)=>{
-            if(err) return res.send(err)
-
-            res.json(rows)
+            conn.query('SELECT * FROM usuario', (err, rows)=>{
+                if(err) return res.send(err)
+                    res.json(rows)
+            })
         })
-    })
 })
 
 routes.post('/', (req, res)=>{
@@ -27,7 +26,7 @@ routes.post('/', (req, res)=>{
 routes.delete('/:id', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM usuarios WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM usuario WHERE id = ?', [req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('Usuario Eliminado')

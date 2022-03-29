@@ -40,6 +40,7 @@
     "chart.js": "^3.6.0",
     "classnames": "^2.3.1",
     "core-js": "^3.19.1",
+    "crypto-js": "^4.1.1",
     "enzyme": "^3.11.0",
     "express": "^4.17.3",
     "express-myconnection": "^1.0.4",

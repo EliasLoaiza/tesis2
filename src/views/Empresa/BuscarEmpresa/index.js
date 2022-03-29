@@ -28,6 +28,7 @@ import {
  * @function BuscarEmpresa
  **/
 const BuscarEmpresa = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [empresas, setempresas] = useState([])
   useEffect(() => {
     const getempresas = () => {
@@ -36,7 +37,16 @@ const BuscarEmpresa = (props) => {
         .then((res) => setempresas(res))
     }
     getempresas()
-  }, [])
+  }, [listUpdate])
+  const handleDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Empresa/' + id, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -79,6 +89,7 @@ const BuscarEmpresa = (props) => {
                 <CTableDataCell>{empresa.rif}</CTableDataCell>
                 <CTableDataCell>{empresa.nombre}</CTableDataCell>
                 <CTableDataCell>{empresa.direccion}</CTableDataCell>
+                <CButton onClick={() => handleDelete(empresa.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

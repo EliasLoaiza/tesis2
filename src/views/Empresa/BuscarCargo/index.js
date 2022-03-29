@@ -28,6 +28,7 @@ import {
  * @function BuscarCargo
  **/
 const BuscarCargo = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [cargos, setcargos] = useState([])
   useEffect(() => {
     const getcargos = () => {
@@ -36,7 +37,16 @@ const BuscarCargo = (props) => {
         .then((res) => setcargos(res))
     }
     getcargos()
-  }, [])
+  }, [listUpdate])
+  const handleDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Cargo/' + id, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -82,6 +92,7 @@ const BuscarCargo = (props) => {
                 <CTableDataCell>{cargo.codigo}</CTableDataCell>
                 <CTableDataCell>{cargo.nombre}</CTableDataCell>
                 <CTableDataCell>{cargo.descripcion}</CTableDataCell>
+                <CButton onClick={() => handleDelete(cargo.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

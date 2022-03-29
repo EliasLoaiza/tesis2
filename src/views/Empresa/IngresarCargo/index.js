@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CButton,
   CCard,
@@ -22,6 +22,36 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
  * @function IngresarCargo
  **/
 const IngresarCargo = (props) => {
+  const [cargo, setcargo] = useState({
+    nombre: '', /* eslint-disable-line*/
+    descripcion: '', /* eslint-disable-line*/
+    codigo: '',
+  })
+  const handleChange = (e) => {
+    setcargo({
+      ...cargo,
+      [e.target.name]: e.target.value,
+    })
+  }
+  const handleSubmit = () => {
+    cargo.codigo = cargo.nombre[0] + cargo.nombre.length
+    if (cargo.nombre === '' || cargo.descripcion === '' || cargo.codigo === ''){ /* eslint-disable-line*/
+      alert('Todos los campos son obligatorios')
+      return
+    }
+    const requestInit = {
+      method: 'POST',
+      body: JSON.stringify(cargo),
+      headers: { 'Content-Type': 'application/json' },
+    }
+    fetch('http://localhost:9000/Cargo', requestInit)
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+    setcargo({
+      nombre: '', /* eslint-disable-line*/
+      descripcion: '', /* eslint-disable-line*/
+    })
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -29,18 +59,18 @@ const IngresarCargo = (props) => {
           <CCol md={9} lg={7} xl={6}>
             <CCard className="mx-4">
               <CCardBody className="p-4">
-                <CForm>
+                <CForm onSubmit={handleSubmit}>
                   <CInputGroup className="mb-3">
-                    <CFormInput placeholder="Nombre del Cargo" autoComplete="username" />
+                    <CFormInput id="nombre" name="nombre" type="text" value={cargo.nombre} onChange={handleChange} placeholder="Nombre del Cargo" /> {/*eslint-disable-line */}
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CFormLabel htmlFor="exampleFormControlTextarea1">Descripcion</CFormLabel> {/*eslint-disable-line */}
+                    <CFormLabel htmlFor="exampleFormControlTextarea1">Descripcion</CFormLabel>
                     <CInputGroup className="mb-3">
-                      <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+                      <CFormTextarea id="descripcion" name="descripcion" type="text" value={cargo.descripcion} onChange={handleChange} rows="3"></CFormTextarea> {/*eslint-disable-line */}
                     </CInputGroup>
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton color="success">Ingresar Cargo</CButton>
+                    <CButton type="submit" color="success">Ingresar Cargo</CButton> {/*eslint-disable-line */}
                   </div>
                 </CForm>
               </CCardBody>

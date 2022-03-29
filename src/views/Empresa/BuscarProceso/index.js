@@ -28,6 +28,7 @@ import {
  * @function BuscarProceso
  **/
 const BuscarProceso = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [procesos, setprocesos] = useState([])
   useEffect(() => {
     const getprocesos = () => {
@@ -36,7 +37,16 @@ const BuscarProceso = (props) => {
         .then((res) => setprocesos(res))
     }
     getprocesos()
-  }, [])
+  }, [listUpdate])
+  const handleDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Proceso/' + id, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -67,6 +77,7 @@ const BuscarProceso = (props) => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
+              <CTableHeaderCell scope="col">Codigo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Nombre</CTableHeaderCell>
               <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
@@ -75,8 +86,10 @@ const BuscarProceso = (props) => {
             {procesos.map( (proceso) => ( /* eslint-disable-line*/
               <CTableRow key={proceso.id}>
                 <CTableHeaderCell scope="row">{proceso.id}</CTableHeaderCell>
+                <CTableDataCell>{proceso.codigo}</CTableDataCell>
                 <CTableDataCell>{proceso.nombre}</CTableDataCell>
                 <CTableDataCell>{proceso.descripcion}</CTableDataCell>
+                <CButton onClick={() => handleDelete(proceso.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

@@ -28,22 +28,28 @@ const IngresarUsuario = (props) => {
     telefono: 0, /* eslint-disable-line*/
     tipo: '', /* eslint-disable-line*/
     direccion: '', /* eslint-disable-line*/
-    fecha_nacimiento: '' /* eslint-disable-line*/
+    fecha_nacimiento: '', /* eslint-disable-line*/
+    id_cargo: 0, /* eslint-disable-line*/
+    id_empresa: 0 /* eslint-disable-line*/
   })
   const handleChange = (e) => {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value,
     })
-    console.log(e.target.id)
-    console.log(e.target.value)
   }
   const handleSubmit = () => {
     usuario.cedula = parseInt(usuario.cedula, 10)
     usuario.telefono = parseInt(usuario.telefono, 10)
+    usuario.id_empresa = parseInt(usuario.id_empresa, 10)
+    usuario.id_cargo = parseInt(usuario.id_cargo, 10)
     if (usuario.nombre === '' || usuario.cedula <= 0 || usuario.correo === ''){ /* eslint-disable-line*/
       alert('Los campos de Nombre, Cedula y Correo, son obligatorios')
       return
+    }
+    if(usuario.id_empresa <= 0 || usuario.id_cargo <= 0){ /* eslint-disable-line*/
+      usuario.id_empresa = 5
+      usuario.id_cargo = 7
     }
     const requestInit = {
       method: 'POST',
@@ -54,16 +60,17 @@ const IngresarUsuario = (props) => {
       .then((res) => res.json())
       .then((res) => console.log(res))
     setUsuario({
-      cedula: 1, /* eslint-disable-line*/
+      cedula: 0, /* eslint-disable-line*/
       nombre: '', /* eslint-disable-line*/
       apellido: '', /* eslint-disable-line*/
       correo: '', /* eslint-disable-line*/
-      telefono: 1, /* eslint-disable-line*/
+      telefono: 0, /* eslint-disable-line*/
       tipo: '', /* eslint-disable-line*/
       direccion: '', /* eslint-disable-line*/
-      fecha_nacimiento: '' /* eslint-disable-line*/
+      fecha_nacimiento: '', /* eslint-disable-line*/
+      id_cargo: 0, /* eslint-disable-line*/
+      id_empresa: 0 /* eslint-disable-line*/
     })
-    alert('Stop')
   }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
@@ -109,8 +116,6 @@ const IngresarUsuario = (props) => {
                       <CFormLabel htmlFor="">Fecha de Nacimiento</CFormLabel>
                     </CInputGroup>
                     <CFormInput id="fecha_nacimiento" name="fecha_nacimiento" onChange={handleChange} type="date" /> {/* eslint-disable-line*/}
-                    <CFormInput id="Mes_Nacimiento" name="Mes_Nacimiento" onChange={handleChange} placeholder="Mes" type="number" /> {/* eslint-disable-line*/}
-                    <CFormInput id="Año_Nacimiento" name="Año_Nacimiento" onChange={handleChange} placeholder="Años" type="number" /> {/* eslint-disable-line*/}
                   </CInputGroup>
                   <div className="d-grid">
                     <CButton type="submit" color="success">Ingresar Usuario</CButton> {/* eslint-disable-line*/}

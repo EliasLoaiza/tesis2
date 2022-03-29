@@ -28,6 +28,7 @@ import {
  * @function BuscarMedicamentos
  **/
 const BuscarMedicamentos = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [medicamentos, setmedicamentos] = useState([])
   useEffect(() => {
     const getmedicamentos = () => {
@@ -36,7 +37,16 @@ const BuscarMedicamentos = (props) => {
         .then((res) => setmedicamentos(res))
     }
     getmedicamentos()
-  }, [])
+  }, [listUpdate])
+  const handleDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Medicamento/' + id, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -82,17 +92,13 @@ const BuscarMedicamentos = (props) => {
                 <CInputGroup className="mb-3">
                   <CFormLabel htmlFor="">Fecha de Expedicion</CFormLabel>
                 </CInputGroup>
-                <CFormInput placeholder="Dia" />
-                <CFormInput placeholder="Mes" />
-                <CFormInput placeholder="Años" />
+                <CFormInput id="fecha_expedicion" name="fecha_expedicion" type="date" /> {/* eslint-disable-line*/}
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CInputGroup className="mb-3">
                   <CFormLabel htmlFor="">Fecha de Vencimiento</CFormLabel>
                 </CInputGroup>
-                <CFormInput placeholder="Dia" />
-                <CFormInput placeholder="Mes" />
-                <CFormInput placeholder="Años" />
+                <CFormInput id="fecha_vencimiento" name="fecha_vencimiento" type="date" /> {/* eslint-disable-line*/}
               </CInputGroup>
             </CCol>
             <div className="d-grid">
@@ -122,6 +128,7 @@ const BuscarMedicamentos = (props) => {
                 <CTableDataCell>{medicamento.condiciones_almacenamiento}</CTableDataCell>
                 <CTableDataCell>{medicamento.fecha_expedicion}</CTableDataCell>
                 <CTableDataCell>{medicamento.fecha_vencimiento}</CTableDataCell>
+                <CButton onClick={() => handleDelete(medicamento.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>
