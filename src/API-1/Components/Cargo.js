@@ -5,7 +5,7 @@ routes.get('/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
 
-        conn.query('SELECT * FROM cargo', (err, rows)=>{
+        conn.query('SELECT * FROM empresa, cargo WHERE cargo.Id_empresa = empresa.id_empresa', (err, rows)=>{
             if(err) return res.send(err)
 
             res.json(rows)
@@ -24,10 +24,10 @@ routes.post('/', (req, res)=>{
     })
 })
 
-routes.delete('/:id', (req, res)=>{
+routes.delete('/:id_cargo', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM cargo WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM cargo WHERE id_cargo = ?', [req.params.id_cargo], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('Cargo Eliminado')

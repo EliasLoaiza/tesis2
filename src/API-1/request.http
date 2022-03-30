@@ -1,22 +1,17 @@
 ###
-GET http://localhost:9000/Usuario HTTP/1.1
+GET http://localhost:9000/Proceso HTTP/1.1
 
 ###
-POST http://localhost:9000/Usuario HTTP/1.1
+POST http://localhost:9000/Lote HTTP/1.1
 Content-Type: application/json
 
 {
-    "cedula": "11661858", 
-    "nombre": "Eliaquin Jose", 
-    "apellido": "Loaiza Rodriguez", 
-    "correo": "eliaquinloaiza@gmail.com", 
-    "telefono": "04146345193", 
-    "tipo": "Persona Natural", 
-    "direccion": "El Bosque III Villa 15", 
-    "fecha_nacimiento": "1970=07-9",
-    "id_cargo": "7",
-    "id_empresa": "5"
-
+    "Id_usuario": 27,
+    "Id_empresa": 5,
+    "hash_actual_lote": "",
+    "cantidad_medicamentos_lote": 0,
+    "Id_medicamento": 27,
+    "fecha_creacion_lote": ""
 }
 
 ###

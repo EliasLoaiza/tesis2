@@ -38,11 +38,11 @@ const BuscarProceso = (props) => {
     }
     getprocesos()
   }, [listUpdate])
-  const handleDelete = (id) => {
+  const handleDelete = (id_proceso) => {
     const requestInit = {
       method: 'DELETE',
     }
-    fetch('http://localhost:9000/Proceso/' + id, requestInit)
+    fetch('http://localhost:9000/Proceso/' + id_proceso, requestInit)
       .then((res) => res.text())
       .then((res) => console.log(res))
     setlistUpdate(true)
@@ -77,19 +77,19 @@ const BuscarProceso = (props) => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Codigo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Nombre</CTableHeaderCell>
+              <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
             {procesos.map( (proceso) => ( /* eslint-disable-line*/
               <CTableRow key={proceso.id}>
-                <CTableHeaderCell scope="row">{proceso.id}</CTableHeaderCell>
-                <CTableDataCell>{proceso.codigo}</CTableDataCell>
-                <CTableDataCell>{proceso.nombre}</CTableDataCell>
-                <CTableDataCell>{proceso.descripcion}</CTableDataCell>
-                <CButton onClick={() => handleDelete(proceso.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
+                <CTableHeaderCell scope="row">{proceso.id_proceso}</CTableHeaderCell>
+                <CTableDataCell>{proceso.nombre_proceso}</CTableDataCell>
+                <CTableDataCell>{proceso.nombre_cargo}</CTableDataCell>
+                <CTableDataCell>{proceso.descripcion_proceso}</CTableDataCell>
+                <CButton onClick={() => handleDelete(proceso.id_proceso)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

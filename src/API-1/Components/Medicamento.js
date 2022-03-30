@@ -24,10 +24,10 @@ routes.post('/', (req, res)=>{
     })
 })
 
-routes.delete('/:id', (req, res)=>{
+routes.delete('/:id_medicamento', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM medicamento WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM medicamento WHERE id_medicamento = ?', [req.params.id_medicamento], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('Medicamento Eliminado')

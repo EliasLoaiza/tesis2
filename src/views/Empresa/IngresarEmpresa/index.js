@@ -23,9 +23,12 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
  **/
 const IngresarEmpresa = (props) => {
   const [empresa, setempresa] = useState({
-    rif: 0, /* eslint-disable-line*/
-    nombre: '', /* eslint-disable-line*/
-    direccion: '', /* eslint-disable-line*/
+    rif_empresa: 0, /* eslint-disable-line*/
+    nombre_empresa: '', /* eslint-disable-line*/
+    direccion_empresa: '', /* eslint-disable-line*/
+    Id_usuario: 0, /* eslint-disable-line*/
+    Id_cargo: 0, /* eslint-disable-line*/
+    Id_proceso: 0, /* eslint-disable-line*/
   })
   const handleChange = (e) => {
     setempresa({
@@ -34,10 +37,18 @@ const IngresarEmpresa = (props) => {
     })
   }
   const handleSubmit = () => {
-    empresa.rif = parseInt(empresa.rif, 10)
-    if (empresa.nombre === '' || empresa.rif <= 0 || empresa.direccion === ''){ /* eslint-disable-line*/
-      alert('Todos los campos son obligatorios')
+    empresa.rif_empresa = parseInt(empresa.rif_empresa, 10)
+    empresa.Id_usuario = parseInt(empresa.Id_usuario, 10)
+    empresa.Id_cargo = parseInt(empresa.Id_cargo, 10)
+    empresa.Id_proceso = parseInt(empresa.Id_proceso, 10)
+    if (empresa.nombre_empresa === '' || empresa.rif_empresa <= 0 || empresa.direccion_empresa === ''){ /* eslint-disable-line*/
+      alert('Los Campos de Nombre, RIF y Direccion son Obligatorios')
       return
+    }
+    if(empresa.Id_proceso <= 0 || empresa.Id_cargo <= 0 || empresa.Id_usuario <= 0){ /* eslint-disable-line*/
+      empresa.Id_proceso = 5
+      empresa.Id_cargo = 7
+      empresa.Id_usuario = 27
     }
     const requestInit = {
       method: 'POST',
@@ -48,9 +59,12 @@ const IngresarEmpresa = (props) => {
       .then((res) => res.json())
       .then((res) => console.log(res))
     setempresa({
-      rif: 0, /* eslint-disable-line*/
-      nombre: '', /* eslint-disable-line*/
-      direccion: '', /* eslint-disable-line*/
+      rif_empresa: 0, /* eslint-disable-line*/
+      nombre_empresa: '', /* eslint-disable-line*/
+      direccion_empresa: '', /* eslint-disable-line*/
+      Id_usuario: 0, /* eslint-disable-line*/
+      Id_cargo: 0, /* eslint-disable-line*/
+      Id_proceso: 0, /* eslint-disable-line*/
     })
   }
   return (
@@ -62,15 +76,15 @@ const IngresarEmpresa = (props) => {
               <CCardBody className="p-4">
                 <CForm onSubmit={handleSubmit}>
                   <CInputGroup className="mb-3">
-                    <CFormInput id="nombre" name="nombre" type="text" value={empresa.nombre} onChange={handleChange} placeholder="Nombre de la Empresa" /> {/*eslint-disable-line */}
+                    <CFormInput id="nombre_empresa" name="nombre_empresa" type="text" value={empresa.nombre_empresa} onChange={handleChange} placeholder="Nombre de la Empresa" /> {/*eslint-disable-line */}
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CFormInput id="rif" name="rif" type="number" value={empresa.rif} onChange={handleChange} placeholder="RIF" /> {/*eslint-disable-line */}
+                    <CFormInput id="rif_empresa" name="rif_empresa" type="number" value={empresa.rif_empresa} onChange={handleChange} placeholder="RIF" /> {/*eslint-disable-line */}
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CFormLabel htmlFor="exampleFormControlTextarea1">Direccion</CFormLabel> {/*eslint-disable-line */}
                     <CInputGroup className="mb-3">
-                      <CFormTextarea id="direccion" name="direccion" type="text" value={empresa.direccion} onChange={handleChange} rows="3"></CFormTextarea> {/*eslint-disable-line */}
+                      <CFormTextarea id="direccion_empresa" name="direccion_empresa" type="text" value={empresa.direccion_empresa} onChange={handleChange} rows="3"></CFormTextarea> {/*eslint-disable-line */}
                     </CInputGroup>
                   </CInputGroup>
                   <div className="d-grid">

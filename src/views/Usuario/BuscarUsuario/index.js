@@ -29,6 +29,7 @@ import { Component } from 'react'
  * @function BuscarUsuario
  **/
 const BuscarUsuario = (props) => {
+  const [listUpdate, setlistUpdate] = useState(false)
   const [usuarios, setusuarios] = useState([])
   useEffect(() => {
     const getusuarios = () => {
@@ -37,8 +38,16 @@ const BuscarUsuario = (props) => {
         .then((res) => setusuarios(res))
     }
     getusuarios()
-  }, [])
-  console.log(usuarios)
+  }, [listUpdate])
+  const handleDelete = (id_usuario) => {
+    const requestInit = {
+      method: 'DELETE',
+    }
+    fetch('http://localhost:9000/Usuario/' + id_usuario, requestInit)
+      .then((res) => res.text())
+      .then((res) => console.log(res))
+    setlistUpdate(true)
+  }
   return (
     <div className="bg-light min-vh-50 d-flex flex-row align-items-center">
       <CContainer>
@@ -108,16 +117,17 @@ const BuscarUsuario = (props) => {
           </CTableHead>
           <CTableBody>
             {usuarios.map( (usuario) => ( /* eslint-disable-line*/
-              <CTableRow key={usuario.id}>
-                <CTableHeaderCell scope="row">{usuario.id}</CTableHeaderCell>
-                <CTableDataCell>{usuario.nombre}</CTableDataCell>
-                <CTableDataCell>{usuario.apellido}</CTableDataCell>
-                <CTableDataCell>{usuario.cedula}</CTableDataCell>
-                <CTableDataCell>{usuario.correo}</CTableDataCell>
-                <CTableDataCell>{usuario.telefono}</CTableDataCell>
-                <CTableDataCell>{usuario.tipo}</CTableDataCell>
-                <CTableDataCell>{usuario.direccion}</CTableDataCell>
-                <CTableDataCell>{usuario.fecha_nacimiento}</CTableDataCell>
+              <CTableRow key={usuario.id_usuario}>
+                <CTableHeaderCell>{usuario.id_usuario}</CTableHeaderCell>
+                <CTableDataCell>{usuario.nombre_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.apellido_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.cedula_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.correo_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.telefono_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.tipo_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.direccion_usuario}</CTableDataCell>
+                <CTableDataCell>{usuario.fecha_nacimiento_usuario}</CTableDataCell>
+                <CButton onClick={() => handleDelete(usuario.id_usuario)}>X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

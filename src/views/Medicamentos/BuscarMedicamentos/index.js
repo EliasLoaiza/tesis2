@@ -38,11 +38,11 @@ const BuscarMedicamentos = (props) => {
     }
     getmedicamentos()
   }, [listUpdate])
-  const handleDelete = (id) => {
+  const handleDelete = (id_medicamento) => {
     const requestInit = {
       method: 'DELETE',
     }
-    fetch('http://localhost:9000/Medicamento/' + id, requestInit)
+    fetch('http://localhost:9000/Medicamento/' + id_medicamento, requestInit)
       .then((res) => res.text())
       .then((res) => console.log(res))
     setlistUpdate(true)
@@ -120,15 +120,15 @@ const BuscarMedicamentos = (props) => {
           </CTableHead>
           <CTableBody>
             {medicamentos.map( (medicamento) => ( /* eslint-disable-line*/
-              <CTableRow key={medicamento.id}>
-                <CTableHeaderCell scope="row">{medicamento.id}</CTableHeaderCell>
-                <CTableDataCell>{medicamento.nombre}</CTableDataCell>
-                <CTableDataCell>{medicamento.tipo_administracion}</CTableDataCell>
-                <CTableDataCell>{medicamento.uso}</CTableDataCell>
+              <CTableRow key={medicamento.id_medicamento}>
+                <CTableHeaderCell scope="row">{medicamento.id_medicamento}</CTableHeaderCell>
+                <CTableDataCell>{medicamento.nombre_medicamento}</CTableDataCell>
+                <CTableDataCell>{medicamento.tipo_administracion_medicamento}</CTableDataCell>
+                <CTableDataCell>{medicamento.uso_medicamento}</CTableDataCell>
                 <CTableDataCell>{medicamento.condiciones_almacenamiento}</CTableDataCell>
-                <CTableDataCell>{medicamento.fecha_expedicion}</CTableDataCell>
-                <CTableDataCell>{medicamento.fecha_vencimiento}</CTableDataCell>
-                <CButton onClick={() => handleDelete(medicamento.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
+                <CTableDataCell>{medicamento.fecha_expedicion_medicamento}</CTableDataCell>
+                <CTableDataCell>{medicamento.fecha_vencimiento_medicamento}</CTableDataCell>
+                <CButton onClick={() => handleDelete(medicamento.id_medicamento)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

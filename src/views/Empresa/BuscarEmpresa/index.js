@@ -38,11 +38,11 @@ const BuscarEmpresa = (props) => {
     }
     getempresas()
   }, [listUpdate])
-  const handleDelete = (id) => {
+  const handleDelete = (id_empresa) => {
     const requestInit = {
       method: 'DELETE',
     }
-    fetch('http://localhost:9000/Empresa/' + id, requestInit)
+    fetch('http://localhost:9000/Empresa/' + id_empresa, requestInit)
       .then((res) => res.text())
       .then((res) => console.log(res))
     setlistUpdate(true)
@@ -84,12 +84,12 @@ const BuscarEmpresa = (props) => {
           </CTableHead>
           <CTableBody>
             {empresas.map( (empresa) => ( /* eslint-disable-line*/
-              <CTableRow key={empresa.id}>
-                <CTableHeaderCell scope="row">{empresa.id}</CTableHeaderCell>
-                <CTableDataCell>{empresa.rif}</CTableDataCell>
-                <CTableDataCell>{empresa.nombre}</CTableDataCell>
-                <CTableDataCell>{empresa.direccion}</CTableDataCell>
-                <CButton onClick={() => handleDelete(empresa.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
+              <CTableRow key={empresa.id_empresa}>
+                <CTableHeaderCell scope="row">{empresa.id_empresa}</CTableHeaderCell>
+                <CTableDataCell>{empresa.rif_empresa}</CTableDataCell>
+                <CTableDataCell>{empresa.nombre_empresa}</CTableDataCell>
+                <CTableDataCell>{empresa.direccion_empresa}</CTableDataCell>
+                <CButton onClick={() => handleDelete(empresa.id_empresa)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

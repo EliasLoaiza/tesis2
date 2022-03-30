@@ -38,11 +38,11 @@ const BuscarCargo = (props) => {
     }
     getcargos()
   }, [listUpdate])
-  const handleDelete = (id) => {
+  const handleDelete = (id_cargo) => {
     const requestInit = {
       method: 'DELETE',
     }
-    fetch('http://localhost:9000/Cargo/' + id, requestInit)
+    fetch('http://localhost:9000/Cargo/' + id_cargo, requestInit)
       .then((res) => res.text())
       .then((res) => console.log(res))
     setlistUpdate(true)
@@ -82,17 +82,19 @@ const BuscarCargo = (props) => {
               <CTableHeaderCell scope="col">#</CTableHeaderCell>
               <CTableHeaderCell scope="col">Codigo</CTableHeaderCell>
               <CTableHeaderCell scope="col">Cargo</CTableHeaderCell>
+              <CTableHeaderCell scope="col">Nombre de la Empresa</CTableHeaderCell>
               <CTableHeaderCell scope="col">Descripcion</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
             {cargos.map( (cargo) => ( /* eslint-disable-line*/
-              <CTableRow key={cargo.id}>
-                <CTableHeaderCell scope="row">{cargo.id}</CTableHeaderCell>
-                <CTableDataCell>{cargo.codigo}</CTableDataCell>
-                <CTableDataCell>{cargo.nombre}</CTableDataCell>
-                <CTableDataCell>{cargo.descripcion}</CTableDataCell>
-                <CButton onClick={() => handleDelete(cargo.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
+              <CTableRow key={cargo.id_cargo}>
+                <CTableHeaderCell scope="row">{cargo.id_cargo}</CTableHeaderCell>
+                <CTableDataCell>{cargo.codigo_cargo}</CTableDataCell>
+                <CTableDataCell>{cargo.nombre_cargo}</CTableDataCell>
+                <CTableDataCell>{cargo.nombre_empresa}</CTableDataCell>
+                <CTableDataCell>{cargo.descripcion_cargo}</CTableDataCell>
+                <CButton onClick={() => handleDelete(cargo.id_cargo)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

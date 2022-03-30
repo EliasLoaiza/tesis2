@@ -106,16 +106,16 @@ const BuscarLotes = (props) => {
           </CTableHead>
           <CTableBody>
             {lotes.map( (lote) => ( /* eslint-disable-line*/
-              <CTableRow key={lote.id}>
-                <CTableHeaderCell scope="row">{lote.id}</CTableHeaderCell>
-                <CTableDataCell>{lote.hash_actual}</CTableDataCell>
+              <CTableRow key={lote.id_lote}>
+                <CTableHeaderCell scope="row">{lote.id_lote}</CTableHeaderCell>
+                <CTableDataCell>{lote.hash_actual_lote}</CTableDataCell>
                 <CTableDataCell>{lote.nombre_usuario}</CTableDataCell>
                 <CTableDataCell>{lote.nombre_medicamento}</CTableDataCell>
-                <CTableDataCell>{lote.cantidad_medicamentos}</CTableDataCell>
+                <CTableDataCell>{lote.cantidad_medicamentos_lote}</CTableDataCell>
                 <CTableDataCell>{lote.nombre_empresa}</CTableDataCell>
-                <CTableDataCell>{lote.fecha_creacion}</CTableDataCell>
-                <CTableDataCell>{lote.fecha_salida}</CTableDataCell>
-                <CButton onClick={() => handleDelete(lote.id)} color="red">X</CButton>{ /* eslint-disable-line*/}
+                <CTableDataCell>{lote.fecha_creacion_lote}</CTableDataCell>
+                <CTableDataCell>{lote.fecha_salida_lote}</CTableDataCell>
+                <CButton onClick={() => handleDelete(lote.id_lote)} color="red">X</CButton>{ /* eslint-disable-line*/}
               </CTableRow>
             ))}
           </CTableBody>

@@ -5,7 +5,7 @@ routes.get('/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
 
-        conn.query('SELECT * FROM proceso', (err, rows)=>{
+        conn.query('SELECT * FROM proceso, cargo_proceso, cargo WHERE proceso.id_proceso = cargo_proceso.Id_proceso AND cargo.id_cargo = cargo_proceso.Id_cargo', (err, rows)=>{
             if(err) return res.send(err)
 
             res.json(rows)
@@ -24,10 +24,10 @@ routes.post('/', (req, res)=>{
     })
 })
 
-routes.delete('/:id', (req, res)=>{
+routes.delete('/:id_proceso', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM proceso WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM proceso WHERE id_proceso = ?', [req.params.id_proceso], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('Proceso Eliminado')

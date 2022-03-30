@@ -23,10 +23,12 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
  **/
 const IngresarLotes = (props) => {
   const [lote, setlote] = useState({
-    hash_actual: '',
-    cantidad_medicamentos: 0, /* eslint-disable-line*/
-    id_medicamento: 0, /* eslint-disable-line*/
-    fecha_creacion: '', /* eslint-disable-line*/
+    Id_usuario: 0, /* eslint-disable-line*/
+    Id_empresa: 0, /* eslint-disable-line*/
+    hash_actual_lote: '',
+    cantidad_medicamentos_lote: 0, /* eslint-disable-line*/
+    Id_medicamento: 0, /* eslint-disable-line*/
+    fecha_creacion_lote: '', /* eslint-disable-line*/
   })
   const handleChange = (e) => {
     setlote({
@@ -35,16 +37,18 @@ const IngresarLotes = (props) => {
     })
   }
   const handleSubmit = () => {
-    lote.cantidad_medicamentos = parseInt(lote.cantidad_medicamentos, 10)
-    lote.id_medicamento = parseInt(lote.id_medicamento, 10)
-    if (lote.cantidad_medicamentos <= 0 || lote.id_medicamento <= 0 || lote.fecha_creacion === ''){ /* eslint-disable-line*/
+    lote.Id_usuario = parseInt(lote.Id_usuario, 10)
+    lote.Id_empresa = parseInt(lote.Id_empresa, 10)
+    lote.cantidad_medicamentos_lote = parseInt(lote.cantidad_medicamentos_lote, 10)
+    lote.Id_medicamento = parseInt(lote.Id_medicamento, 10)
+    if (lote.fecha_creacion_lote === '' || lote.cantidad_medicamentos_lote <= 0 || lote.Id_usuario <= 0 || lote.Id_empresa <= 0 || lote.Id_medicamento <= 0){ /* eslint-disable-line*/
       alert('Todos los campos son obligatorios')
       return
     }
     const createHash = () => {
-      return sha256(lote.id_medicamento + lote.cantidad_medicamentos + lote.fecha_creacion).toString() /* eslint-disable-line*/
+      return sha256(lote.Id_medicamento_lote + lote.cantidad_medicamentos_lote + lote.fecha_creacion_lote).toString() /* eslint-disable-line*/
     }
-    lote.hash_actual = createHash()
+    lote.hash_actual_lote = createHash()
     const requestInit = {
       method: 'POST',
       body: JSON.stringify(lote),
@@ -54,9 +58,12 @@ const IngresarLotes = (props) => {
       .then((res) => res.json())
       .then((res) => console.log(res))
     setlote({
-      cantidad_medicamentos: 0, /* eslint-disable-line*/
-      id_medicamento: 0, /* eslint-disable-line*/
-      fecha_creacion: '', /* eslint-disable-line*/
+      Id_usuario: 0, /* eslint-disable-line*/
+      Id_empresa: 0, /* eslint-disable-line*/
+      hash_actual_lote: '',
+      cantidad_medicamentos_lote: 0, /* eslint-disable-line*/
+      Id_medicamento: 0, /* eslint-disable-line*/
+      fecha_creacion_lote: '', /* eslint-disable-line*/
     })
   }
   return (
@@ -69,21 +76,33 @@ const IngresarLotes = (props) => {
                 <CForm onSubmit={handleSubmit}>
                   <CInputGroup className="mb-3">
                     <CInputGroup className="mb-3">
+                      <CFormLabel htmlFor="">Codigo del Usuario</CFormLabel>
+                    </CInputGroup>
+                    <CFormInput id="Id_usuario" name="Id_usuario" value={lote.Id_usuario} onChange={handleChange} type="number" placeholder="Codigo del Usuario" /> {/* eslint-disable-line*/}
+                  </CInputGroup>
+                  <CInputGroup className="mb-3">
+                    <CInputGroup className="mb-3">
+                      <CFormLabel htmlFor="">Codigo de la empresa</CFormLabel>
+                    </CInputGroup>
+                    <CFormInput id="Id_empresa" name="Id_empresa" value={lote.Id_empresa} onChange={handleChange} type="number" placeholder="Codigo de la empresa" /> {/* eslint-disable-line*/}
+                  </CInputGroup>
+                  <CInputGroup className="mb-3">
+                    <CInputGroup className="mb-3">
                       <CFormLabel htmlFor="">Codigo del Medicamento</CFormLabel>
                     </CInputGroup>
-                    <CFormInput id="id_medicamento" name="id_medicamento" value={lote.id_medicamento} onChange={handleChange} type="number" placeholder="Codigo del Medicamento" /> {/* eslint-disable-line*/}
+                    <CFormInput id="Id_medicamento" name="Id_medicamento" value={lote.Id_medicamento} onChange={handleChange} type="number" placeholder="Codigo del medicamento" /> {/* eslint-disable-line*/}
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroup className="mb-3">
                       <CFormLabel htmlFor="">Cantidad del Medicamento</CFormLabel>
                     </CInputGroup>
-                    <CFormInput id="cantidad_medicamentos" name="cantidad_medicamentos" value={lote.cantidad_medicamentos} onChange={handleChange} type="number" placeholder="Cantidad de Medicamentos" /> {/* eslint-disable-line*/}
+                    <CFormInput id="cantidad_medicamentos_lote" name="cantidad_medicamentos_lote" value={lote.cantidad_medicamentos_lote} onChange={handleChange} type="number" placeholder="Cantidad de Medicamentos" /> {/* eslint-disable-line*/}
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroup className="mb-3">
                       <CFormLabel htmlFor="">Fecha de Creacion</CFormLabel>
                     </CInputGroup>
-                    <CFormInput id="fecha_creacion" name="fecha_creacion" value={lote.fecha_creacion} onChange={handleChange} type="date" /> {/* eslint-disable-line*/}
+                    <CFormInput id="fecha_creacion_lote" name="fecha_creacion_lote" value={lote.fecha_creacion_lote} onChange={handleChange} type="date" /> {/* eslint-disable-line*/}
                   </CInputGroup>
                   <div className="d-grid">
                     <CButton type="submit" color="success">Ingresar Lote</CButton> {/* eslint-disable-line*/}

@@ -24,9 +24,10 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
  **/
 const IngresarProceso = (props) => {
   const [proceso, setproceso] = useState({
-    nombre: '', /* eslint-disable-line*/
-    descripcion: '', /* eslint-disable-line*/
-    codigo: '',
+    nombre_proceso: '', /* eslint-disable-line*/
+    descripcion_proceso: '', /* eslint-disable-line*/
+    Id_cargo: 0,
+    Id_empresa: 0,
   })
   const handleChange = (e) => {
     setproceso({
@@ -35,7 +36,9 @@ const IngresarProceso = (props) => {
     })
   }
   const handleSubmit = () => {
-    if (proceso.nombre === '' || proceso.descripcion === ''){ /* eslint-disable-line*/
+    proceso.Id_empresa = parseInt(proceso.Id_empresa, 10)
+    proceso.Id_cargo = parseInt(proceso.Id_cargo, 10)
+    if (proceso.nombre === '' || proceso.descripcion === '' || proceso.Id_cargo <= 0 || proceso.Id_empresa <= 0){ /* eslint-disable-line*/
       alert('Todos los campos son obligatorios')
       return
     }
